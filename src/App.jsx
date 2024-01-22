@@ -1,7 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+
+import './styles/App.css';
+import "./styles/reset.css";
+
 import Card from './components/Card';
 import shuffleArray from './arrayShuffler';
 
