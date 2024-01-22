@@ -3,9 +3,9 @@ export default function shuffleArray(array)
 {
     let randomIndex;
 
-    for (let i = 0; i < array.length; i++)
+    for (let i = array.length - 1; i > 0; i--)
     {
-        randomIndex = Math.ceil(Math.random() * i);
+        randomIndex = Math.floor(Math.random() * i);
         [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
     }
 
