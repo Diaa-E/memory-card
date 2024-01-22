@@ -61,6 +61,9 @@ function App() {
 
   return (
     <>
+      {
+        gameover? <h2>Game Over</h2> : <></>
+      }
       <h1>Score: {score}</h1>
       {
         cardImages.map(image => <Card key={image.id} id={image.id} imgSrc={image.imgSrc} imgText={image.imgText} onClick={handleCardClick}/>)
