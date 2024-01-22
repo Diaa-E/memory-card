@@ -27,14 +27,6 @@ function App() {
     return shuffleArray(cardImages);
   }
 
-  function markCard(cardId, cardsArray)
-  {
-    const targetIndex = cardsArray.findIndex((image) => image.id === cardId);
-    cardsArray[targetIndex].clicked = true;
-
-    return cardsArray;
-  }
-
   function getCardIndex(cardId, cardsArray)
   {
     return cardsArray.findIndex((image) => image.id === cardId);
