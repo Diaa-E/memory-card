@@ -1,16 +1,13 @@
 //Fisher–Yates Shuffle
-export default function shuffleArray(cardsArray)
+export default function shuffleArray(array)
 {
-    let currentIndex = cardsArray.length;
     let randomIndex;
 
-    while (currentIndex > 0)
+    for (let i = 0; i < array.length; i++)
     {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-
-        [cardsArray[currentIndex], cardsArray[randomIndex]] = [cardsArray[randomIndex], cardsArray[currentIndex]];
+        randomIndex = Math.ceil(Math.random() * i);
+        [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
     }
 
-    return cardsArray;
+    return array;
 }
