@@ -6,7 +6,7 @@ export default function Card({imgSrc, imgText, clicked, onClick})
     return ( 
         <div>
             <img src={imgSrc} alt={`${imgText}'s image`} />
-            <p>{imgText}</p>
+            <p onClick={onClick}>{imgText}</p>
         </div>
     )
 }

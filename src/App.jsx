@@ -2,7 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Card from './components/Card'
+import Card from './components/Card';
+import shuffleArray from './arrayShuffler';
 
 function App() {
   
@@ -17,10 +18,15 @@ function App() {
     return array;
   });
 
+  function shuffleCards()
+  {
+    setCardImages(Array.from(shuffleArray(cardImages)));
+  }
+
   return (
     <>
       {
-        cardImages.map(image => <Card key={image.imgText} imgSrc={image.imgSrc} imgText={image.imgText}/>)
+        cardImages.map(image => <Card key={image.imgText} imgSrc={image.imgSrc} imgText={image.imgText} onClick={shuffleCards}/>)
       }
     </>
   )
