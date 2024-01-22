@@ -5,6 +5,7 @@ import "./styles/reset.css";
 
 import Card from './components/Card';
 import shuffleArray from './arrayShuffler';
+import { v4 as generateId } from 'uuid';
 
 function App() {
   
@@ -13,7 +14,7 @@ function App() {
     const array = []
     for (let i = 0; i < 12; i++)
     {
-      array.push({imgSrc:"", imgText: `${i}`, clicked: false});
+      array.push({id:generateId(), imgSrc:"", imgText: `${i}`, clicked: false});
     }
 
     return array;
@@ -21,13 +22,29 @@ function App() {
 
   function shuffleCards()
   {
-    setCardImages(Array.from(shuffleArray(cardImages)));
+    return shuffleArray(cardImages);
+  }
+
+  function markCard(cardId, cardsArray)
+  {
+    const targetIndex = cardsArray.findIndex((image) => image.id === cardId);
+    cardsArray[targetIndex].clicked = true;
+
+    return cardsArray;
+  }
+
+  function handleCardClick(cardId)
+  {
+    let newCardImages = Array.from(cardImages);
+    newCardImages = Array.from(markCard(cardId, newCardImages));
+    newCardImages = Array.from(shuffleCards(newCardImages));
+    setCardImages(newCardImages);
   }
 
   return (
     <>
       {
-        cardImages.map(image => <Card key={image.imgText} imgSrc={image.imgSrc} imgText={image.imgText} onClick={shuffleCards}/>)
+        cardImages.map(image => <Card key={image.id} id={image.id} imgSrc={image.imgSrc} imgText={image.imgText} onClick={handleCardClick}/>)
       }
     </>
   )
