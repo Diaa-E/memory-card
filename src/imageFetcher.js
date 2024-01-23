@@ -2,7 +2,7 @@ export default async function getRandomImages(count)
 {
     const selectedImages = [];
 
-    const response = await fetchImages("symbol");
+    const response = await fetchImages("face");
 
     for (let i = 0; i < count; i++)
     {
