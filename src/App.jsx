@@ -6,6 +6,7 @@ import "./styles/reset.css";
 import Card from './components/Card';
 import shuffleArray from './arrayShuffler';
 import { v4 as generateId } from 'uuid';
+import getRandomImages from './imageFetcher';
 
 function App() {
   
