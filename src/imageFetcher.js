@@ -1,47 +1,16 @@
 export default async function getRandomImages(count)
 {
-    const queries = [
-        "Apple",
-        "Joker",
-        "Book",
-        "Sword",
-        "Woman",
-        "Man",
-        "geometry",
-        "Jewel",
-        "Pyramid",
-        "Tree",
-        "Knife",
-        "Gun",
-        "Wrench",
-        "Burger",
-        "Juice",
-        "Soft Drink",
-        "Car",
-        "Bus",
-        "Thief",
-        "Clown",
-        "Gold",
-        "Camera",
-        "Phone",
-        "Computer",
-    ];
-
     const selectedImages = [];
+
+    const response = await fetchImages("symbol");
 
     for (let i = 0; i < count; i++)
     {
-        const randomQueryIndex = Math.floor(Math.random() * queries.length);
-        const query = queries[randomQueryIndex];
-        queries.splice(randomQueryIndex, 1);
-
-        const response = await fetchImages(query);
-        const randomHitIndex = Math.floor(Math.random() * response.hits.length);
-        selectedImages.push(response.hits[randomHitIndex].largeImageURL);
-        console.log(response.hits[randomHitIndex].largeImageURL);
+        const randomIndex = Math.floor(Math.random() * response.hits.length);
+        selectedImages.push(response.hits[randomIndex].largeImageURL);
+        response.hits.splice(randomIndex, 1);
     }
 
-    console.log(selectedImages)
     return selectedImages;
 }
 
@@ -51,10 +20,11 @@ async function fetchImages(query = "")
 
     url.searchParams.append("key", "15015852-74ad25fb66baa6531c44a804c");
     url.searchParams.append("q", query);
-    url.searchParams.append("image_type", "vector");
+    url.searchParams.append("image_type", "illustration");
     url.searchParams.append("safesearch", true);
     url.searchParams.append("orientation", "vertical");
-    url.searchParams.append("colors", "grayscale");
+    url.searchParams.append("colors", ["grayscale", "transparent"]);
+    url.searchParams.append("per_page", 200);
 
     const response = await fetch(url, {method: "GET"});
     return await response.json();
