@@ -9,7 +9,8 @@ import { v4 as generateId } from 'uuid';
 import getRandomImages from './imageFetcher';
 
 function App() {
-  
+
+  const [loading, setLoading] = useState(true);
   const [highscores, setHighscores] = useState([]);
   const [time, setTime] = useState(0);
   const [gameover, setgameover] = useState(false);
@@ -24,6 +25,25 @@ function App() {
 
     return array;
   });
+
+  useEffect(() => {
+
+    if (!loading) return;
+
+    getRandomImages(12).then((imageUrls => {
+
+      const images = []
+      
+      imageUrls.forEach(image => {
+        
+        images.push({id:generateId(), imgSrc:image, imgText: ``, clicked: false});
+      })
+      
+      setCardImages(images);
+      setLoading(false);
+    }));
+
+  }, [loading]);
 
   useEffect(() => {
 
