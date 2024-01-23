@@ -6,7 +6,7 @@ import "./styles/reset.css";
 import Card from './components/Card';
 import shuffleArray from './arrayShuffler';
 import { v4 as generateId } from 'uuid';
-import getRandomImages from './imageFetcher';
+import getRandomCards from './cardFetcher';
 
 function App() {
 
@@ -30,13 +30,13 @@ function App() {
 
     if (!loading) return;
 
-    getRandomImages(12).then((imageUrls => {
+    getRandomCards(12).then((cards => {
 
       const images = []
       
-      imageUrls.forEach(image => {
+      cards.forEach(card => {
         
-        images.push({id:generateId(), imgSrc:image, imgText: ``, clicked: false});
+        images.push({id:card.code, imgSrc:card.image, imgText: ``, clicked: false});
       })
       
       setCardImages(images);
