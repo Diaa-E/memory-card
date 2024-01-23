@@ -36,7 +36,7 @@ function App() {
       
       cards.forEach(card => {
         
-        images.push({id:card.code, imgSrc:card.image, imgText: ``, clicked: false});
+        images.push({id:card.id, imgSrc:card.image, imgText: ``, clicked: false});
       })
       
       setCardImages(images);

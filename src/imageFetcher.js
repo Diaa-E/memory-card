@@ -7,7 +7,7 @@ export default async function getRandomImages(count)
     for (let i = 0; i < count; i++)
     {
         const randomIndex = Math.floor(Math.random() * response.hits.length);
-        selectedImages.push(response.hits[randomIndex].largeImageURL);
+        selectedImages.push({image: response.hits[randomIndex].largeImageURL, id: response.hits[randomIndex].id});
         response.hits.splice(randomIndex, 1);
     }
 
