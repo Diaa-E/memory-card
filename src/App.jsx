@@ -65,11 +65,31 @@ function App() {
     setCardImages(newCardImages);
   }
 
+  function resetGame()
+  {
+    const freshCards = [...cardImages];
+
+    freshCards.forEach(card => {
+
+      card.clicked = false;
+    });
+
+    setCardImages(freshCards);
+    setgameover(false);
+    setTime(0);
+    setScore(0);
+  }
+
   return (
     <>
       <h2>Time: {time}</h2>
       {
-        gameover? <h2>Game Over</h2> : <></>
+        gameover? 
+          <>
+            <h2>Game Over</h2>
+            <button onClick={resetGame}>Play Again</button>
+          </>
+        : <></>
       }
       <h1>Score: {score}</h1>
       {
