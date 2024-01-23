@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './styles/App.css';
 import "./styles/reset.css";
@@ -9,11 +9,12 @@ import { v4 as generateId } from 'uuid';
 
 function App() {
   
+  const [time, setTime] = useState(0);
   const [gameover, setgameover] = useState(false);
   const [score, setScore] = useState(0);
   const [cardImages, setCardImages] = useState(() => {
 
-    const array = []
+    const array = [];
     for (let i = 0; i < 12; i++)
     {
       array.push({id:generateId(), imgSrc:"", imgText: `${i}`, clicked: false});
@@ -21,6 +22,19 @@ function App() {
 
     return array;
   });
+
+  useEffect(() => {
+
+    if (gameover) return;
+
+    const timer = setInterval(() => setTime(time => time + 1), 1000);
+
+    return () => {
+
+      clearInterval(timer);
+    };
+
+  }, [gameover]);
 
   function shuffleCards()
   {
@@ -46,13 +60,14 @@ function App() {
     
     setScore(score + 1);
     let newCardImages = [...cardImages];
-    newCardImages[cardIndex].clicked = true
+    newCardImages[cardIndex].clicked = true;
     newCardImages = [...shuffleCards(newCardImages)];
     setCardImages(newCardImages);
   }
 
   return (
     <>
+      <h2>Time: {time}</h2>
       {
         gameover? <h2>Game Over</h2> : <></>
       }
