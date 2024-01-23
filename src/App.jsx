@@ -9,6 +9,7 @@ import { v4 as generateId } from 'uuid';
 
 function App() {
   
+  const [highscores, setHighscores] = useState([]);
   const [time, setTime] = useState(0);
   const [gameover, setgameover] = useState(false);
   const [score, setScore] = useState(0);
@@ -36,6 +37,29 @@ function App() {
 
   }, [gameover]);
 
+  function saveHighscore()
+  {
+    const newScore = {
+      score: score,
+      time: time,
+      rank: +score / +time,
+      id: generateId(),
+    };
+
+    const newHighscores = [...highscores, newScore].sort((a, b) => {
+
+      if (a.rank > b.rank) return -1;
+      return 1;
+    });
+
+    while (newHighscores.length > 5)
+    {
+      newHighscores.pop();
+    }
+
+    setHighscores(newHighscores);
+  }
+
   function shuffleCards()
   {
     return shuffleArray(cardImages);
@@ -55,6 +79,7 @@ function App() {
     if (cardImages[cardIndex].clicked)
     {
       setgameover(true);
+      saveHighscore();
       return;
     }
     
@@ -82,6 +107,11 @@ function App() {
 
   return (
     <>
+      <ul>
+        {
+          highscores.map(highscore => <li key={highscore.id}><p>Time: {highscore.time} Score: {highscore.score}</p></li>)
+        }
+      </ul>
       <h2>Time: {time}</h2>
       {
         gameover? 
