@@ -9,9 +9,7 @@ export default async function getRandomImages(count)
         selectedImages.push(imageUrls[randomIndex].largeImageURL);
         imageUrls.splice(randomIndex, 1);
     }
-
-    console.log(selectedImages);
-
+    
     return selectedImages;
 }
 
