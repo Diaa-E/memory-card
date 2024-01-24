@@ -7,6 +7,7 @@ import Card from './components/Card';
 import shuffleArray from './arrayShuffler';
 import { v4 as generateId } from 'uuid';
 import getRandomCards from './cardFetcher';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
 
@@ -131,8 +132,9 @@ function App() {
     setWinner(false);
   }
 
-  if (!loading) return (
-    <>
+  return (
+    <div>
+      <LoadingScreen enabled={loading}/>
       <ul>
         {
           highscores.map(highscore => <li key={highscore.id}><p>Time: {highscore.time} Score: {highscore.score}</p></li>)
@@ -151,13 +153,7 @@ function App() {
       {
         cardImages.map(image => <Card key={image.id} id={image.id} imgSrc={image.imgSrc} imgText={image.imgText} onClick={handleCardClick}/>)
       }
-    </>
-  )
-
-  return (
-    <>
-      <p>Loading</p>
-    </>
+    </div>
   )
 }
 

@@ -1,0 +1,37 @@
+.loading-container{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    place-items: center;
+    place-content: center;
+}
+
+.loading-container>p{
+    font-size: 50px;
+}
+
+.card-3d{
+    will-change: transform;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: "card";
+    width: 50px;
+    animation: rotate-card 1.5s linear infinite;
+    perspective: 500px;
+    transform-style: preserve-3d;
+}
+
+.card-3d>img{
+    grid-area: card;
+}
+
+.card-3d>img:first-child{
+    transform: translateZ(.1px);
+}
+
+@keyframes rotate-card {
+    from {transform: rotate3d(0, 1, 0, 0turn) rotateZ(30deg);}
+    to {transform: rotate3d(0, 1, 0, 1turn) rotateZ(30deg) ;}
+}
+

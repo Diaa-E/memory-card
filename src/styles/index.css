@@ -7,4 +7,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --bg-loading: #6962ad;
+  --bg-danger: #d04848;
+  --bg-normal: #6c22a6;
 }
