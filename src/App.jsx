@@ -133,7 +133,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='main-container' style={{backgroundColor: `var(${loading? "--bg-loading" : "--bg-normal"})`}}>
       <LoadingScreen enabled={loading}/>
       <ul>
         {

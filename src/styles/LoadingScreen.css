@@ -8,6 +8,7 @@
 
 .loading-container>p{
     font-size: 50px;
+    color: var(--text-bright);
 }
 
 .card-3d{
