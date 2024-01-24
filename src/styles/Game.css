@@ -6,7 +6,11 @@
     "score score score time time time"
     "cards cards cards cards cards cards"
     "cards cards cards cards cards cards";
-    gap: 20px;
+    gap: 50px;
+    padding: 20px;
+    min-width: 100dvw;
+    place-items: center;
+    place-content: center;
 }
 
 .time{
@@ -16,6 +20,7 @@
 
 .score{
     grid-area: score;
+    place-self: flex-start;
 }
 
 .game-container>h2{
