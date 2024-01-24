@@ -8,6 +8,7 @@ import shuffleArray from './arrayShuffler';
 import { v4 as generateId } from 'uuid';
 import getRandomCards from './cardFetcher';
 import LoadingScreen from './components/LoadingScreen';
+import Game from './components/Game';
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
   const [time, setTime] = useState(0);
   const [gameover, setgameover] = useState(false);
   const [score, setScore] = useState(0);
-  const [cardImages, setCardImages] = useState([])
+  const [cards, setCards] = useState([])
 
   useEffect(() => {
 
@@ -33,7 +34,7 @@ function App() {
       cards.forEach(card => {
         
         images.push({id:card.id, imgSrc:card.image, imgText: `card`, clicked: false});
-        setCardImages(images);
+        setCards(images);
         setLoading(false);
       });
       
@@ -79,7 +80,7 @@ function App() {
 
   function shuffleCards()
   {
-    return shuffleArray(cardImages);
+    return shuffleArray(cards);
   }
 
   function getCardIndex(cardId, cardsArray)
@@ -91,20 +92,20 @@ function App() {
   {
     if (gameover) return;
 
-    const cardIndex = getCardIndex(cardId, cardImages);
+    const cardIndex = getCardIndex(cardId, cards);
     
-    if (cardImages[cardIndex].clicked)
+    if (cards[cardIndex].clicked)
     {
       setgameover(true);
       saveHighscore();
       return;
     }
     
-    let newCardImages = [...cardImages];
+    let newCardImages = [...cards];
     newCardImages[cardIndex].clicked = true;
     newCardImages = [...shuffleCards(newCardImages)];
     setScore(score => score + 1);
-    setCardImages(newCardImages);
+    setCards(newCardImages);
     setClickedCards(clickedCards => clickedCards + 1);
 
     if (clickedCards + 1 === cardCount)
@@ -117,14 +118,14 @@ function App() {
 
   function resetGame()
   {
-    const freshCards = [...cardImages];
+    const freshCards = [...cards];
 
     freshCards.forEach(card => {
 
       card.clicked = false;
     });
 
-    setCardImages(freshCards);
+    setCards(freshCards);
     setgameover(false);
     setTime(0);
     setScore(0);
@@ -135,7 +136,8 @@ function App() {
   return (
     <div className='main-container' style={{backgroundColor: `var(${loading? "--bg-loading" : "--bg-normal"})`}}>
       <LoadingScreen enabled={loading}/>
-      <ul>
+      <Game enabled={!loading && !gameover} cards={cards} gameover={gameover} onCardClick={handleCardClick} winner={winner}/>
+      {/* <ul>
         {
           highscores.map(highscore => <li key={highscore.id}><p>Time: {highscore.time} Score: {highscore.score}</p></li>)
         }
@@ -151,8 +153,8 @@ function App() {
       }
       <h1>Score: {score}</h1>
       {
-        cardImages.map(image => <Card key={image.id} id={image.id} imgSrc={image.imgSrc} imgText={image.imgText} onClick={handleCardClick}/>)
-      }
+        cards.map(image => <Card key={image.id} id={image.id} imgSrc={image.imgSrc} imgText={image.imgText} onClick={handleCardClick}/>)
+      } */}
     </div>
   )
 }

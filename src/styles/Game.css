@@ -1,0 +1,24 @@
+.game-container{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, min-content);
+    grid-template-areas: 
+    "score score score time time time"
+    "cards cards cards cards cards cards"
+    "cards cards cards cards cards cards";
+    gap: 20px;
+}
+
+.time{
+    grid-area: time;
+    place-self: flex-end;
+}
+
+.score{
+    grid-area: score;
+}
+
+.game-container>h2{
+    color: var(--text-bright);
+    font-size: 50px;
+}
