@@ -15,16 +15,7 @@ function App() {
   const [time, setTime] = useState(0);
   const [gameover, setgameover] = useState(false);
   const [score, setScore] = useState(0);
-  const [cardImages, setCardImages] = useState(() => {
-
-    const array = [];
-    for (let i = 0; i < 12; i++)
-    {
-      array.push({id:generateId(), imgSrc:"", imgText: `${i}`, clicked: false});
-    }
-
-    return array;
-  });
+  const [cardImages, setCardImages] = useState([])
 
   useEffect(() => {
 
@@ -36,11 +27,11 @@ function App() {
       
       cards.forEach(card => {
         
-        images.push({id:card.id, imgSrc:card.image, imgText: ``, clicked: false});
-      })
+        images.push({id:card.id, imgSrc:card.image, imgText: `card`, clicked: false});
+        setCardImages(images);
+        setLoading(false);
+      });
       
-      setCardImages(images);
-      setLoading(false);
     }));
 
   }, [loading]);
@@ -126,7 +117,7 @@ function App() {
     setScore(0);
   }
 
-  return (
+  if (!loading) return (
     <>
       <ul>
         {
@@ -146,6 +137,12 @@ function App() {
       {
         cardImages.map(image => <Card key={image.id} id={image.id} imgSrc={image.imgSrc} imgText={image.imgText} onClick={handleCardClick}/>)
       }
+    </>
+  )
+
+  return (
+    <>
+      <p>Loading</p>
     </>
   )
 }
