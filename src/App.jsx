@@ -10,6 +10,10 @@ import getRandomCards from './cardFetcher';
 
 function App() {
 
+  const cardCount = 12;
+
+  const [clickedCards, setClickedCards] = useState(0);
+  const [winner, setWinner] = useState(false);
   const [loading, setLoading] = useState(true);
   const [highscores, setHighscores] = useState([]);
   const [time, setTime] = useState(0);
@@ -21,7 +25,7 @@ function App() {
 
     if (!loading) return;
 
-    getRandomCards(12).then((cards => {
+    getRandomCards(cardCount).then((cards => {
 
       const images = []
       
@@ -95,11 +99,19 @@ function App() {
       return;
     }
     
-    setScore(score + 1);
     let newCardImages = [...cardImages];
     newCardImages[cardIndex].clicked = true;
     newCardImages = [...shuffleCards(newCardImages)];
+    setScore(score => score + 1);
     setCardImages(newCardImages);
+    setClickedCards(clickedCards => clickedCards + 1);
+
+    if (clickedCards + 1 === cardCount)
+    {
+      setgameover(true);
+      setWinner(true);
+      saveHighscore();
+    }
   }
 
   function resetGame()
@@ -115,6 +127,8 @@ function App() {
     setgameover(false);
     setTime(0);
     setScore(0);
+    setClickedCards(0);
+    setWinner(false);
   }
 
   if (!loading) return (
@@ -128,7 +142,7 @@ function App() {
       {
         gameover? 
           <>
-            <h2>Game Over</h2>
+            <h2>{winner? "You Win" : "Game Over"}</h2>
             <button onClick={resetGame}>Play Again</button>
           </>
         : <></>
