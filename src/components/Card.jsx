@@ -1,5 +1,4 @@
 import "../styles/Card.css";
-import { useState } from "react";
 
 export default function Card({id, imgSrc, onClick})
 {
