@@ -12,7 +12,7 @@ export default function Game({enabled, cards, winner, gameover, onCardClick})
 
     useEffect(() => {
 
-        if (gameover) return;
+        if (!enabled) return;
     
         const timer = setInterval(() => setTime(time => time + 1), 1000);
     
@@ -21,7 +21,7 @@ export default function Game({enabled, cards, winner, gameover, onCardClick})
           clearInterval(timer);
         };
     
-      }, [gameover]);
+      }, [enabled]);
 
     if (!enabled) return <></>
 
