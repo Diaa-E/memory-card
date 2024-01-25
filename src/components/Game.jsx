@@ -1,5 +1,6 @@
 import shuffleArray from "../arrayShuffler";
 import "../styles/Game.css";
+import formatTime from "../timeFormatter";
 import Card from "./Card";
 import { useState, useEffect } from "react";
 
@@ -11,6 +12,7 @@ export default function Game({enabled, cards, appStatus, appStatusMap, updateCar
 
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
+    const timePretty = formatTime(seconds, minutes);
 
     function getCardIndex(cardId, cardsArray)
     {
@@ -25,7 +27,7 @@ export default function Game({enabled, cards, appStatus, appStatusMap, updateCar
         
         if (cards[cardIndex].clicked)
         {
-            onGameover(score, time);
+            onGameover(score, timePretty);
             return;
         }
         
@@ -38,7 +40,7 @@ export default function Game({enabled, cards, appStatus, appStatusMap, updateCar
 
         if (clickedCards + 1 === cards.length)
         {
-            onWin(score, time);
+            onWin(score, timePretty);
         }
     }
 
@@ -62,7 +64,7 @@ export default function Game({enabled, cards, appStatus, appStatusMap, updateCar
 
     return (
         <div className="game-container">
-            <h2 className="time">{minutes < 10? "0" + minutes : minutes}:{seconds < 10? "0" + seconds : seconds}</h2>
+            <h2 className="time">{timePretty}</h2>
             <h2 className="score">{score}</h2>
             {
                 cards.map(image => <Card
