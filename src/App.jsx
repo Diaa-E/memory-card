@@ -8,7 +8,6 @@ import getRandomCards from './cardFetcher';
 import LoadingScreen from './components/LoadingScreen';
 import Game from './components/Game';
 import GameoverScreen from './components/GameoverScreen';
-import Highscores from './components/Highscores';
 
 function App() {
 
