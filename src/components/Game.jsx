@@ -27,7 +27,7 @@ export default function Game({enabled, cards, appStatus, appStatusMap, updateCar
         
         if (cards[cardIndex].clicked)
         {
-            onGameover(score, timePretty);
+            onGameover(score, time, timePretty);
             return;
         }
         
@@ -40,7 +40,7 @@ export default function Game({enabled, cards, appStatus, appStatusMap, updateCar
 
         if (clickedCards + 1 === cards.length)
         {
-            onWin(score, timePretty);
+            onWin(score, time, timePretty);
         }
     }
 

@@ -53,11 +53,11 @@ function App() {
 
   }, [appStatus]);
 
-  function saveHighscore(score, time)
+  function saveHighscore(score, time, timePretty)
   {
     const newScore = {
       score: score,
-      time: time,
+      time: timePretty,
       rank: +score / +time,
       id: generateId(),
     };
@@ -76,16 +76,16 @@ function App() {
     setHighscores(newHighscores);
   }
 
-  function handleGameover(score, time)
+  function handleGameover(score, time, timePretty)
   {
     setAppStatus(appStatusMap.gameover)
-    saveHighscore(score, time);
+    saveHighscore(score, time, timePretty);
   }
 
-  function handleWin(score, time)
+  function handleWin(score, time, timePretty)
   {
     setAppStatus(appStatusMap.win);
-    saveHighscore(score, time);
+    saveHighscore(score, time, timePretty);
   }
 
   function updateCards(newCards)
