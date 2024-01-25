@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import './styles/App.css';
 import "./styles/reset.css";
 
-import Card from './components/Card';
 import shuffleArray from './arrayShuffler';
 import { v4 as generateId } from 'uuid';
 import getRandomCards from './cardFetcher';
