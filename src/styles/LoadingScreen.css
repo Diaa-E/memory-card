@@ -18,7 +18,12 @@
     grid-template-columns: 1fr;
     grid-template-areas: "card";
     width: 50px;
-    animation: rotate-card 1.5s linear infinite;
+    animation-name: rotate-card;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
     perspective: 500px;
     transform-style: preserve-3d;
 }
@@ -32,7 +37,7 @@
 }
 
 @keyframes rotate-card {
-    from {transform: rotate3d(0, 1, 0, 0turn) rotateZ(30deg);}
-    to {transform: rotate3d(0, 1, 0, 1turn) rotateZ(30deg) ;}
+    from {transform: rotate3d(0, 1, 0, 0deg) rotateZ(30deg);}
+    to {transform: rotate3d(0, 1, 0, 360deg) rotateZ(30deg);}
 }
 
