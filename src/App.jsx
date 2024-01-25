@@ -105,24 +105,6 @@ function App() {
         onGameover={handleGameover}
         updateCards={updateCards}
       />
-      {/* <ul>
-        {
-          highscores.map(highscore => <li key={highscore.id}><p>Time: {highscore.time} Score: {highscore.score}</p></li>)
-        }
-      </ul>
-      <h2>Time: {time}</h2>
-      {
-        gameover? 
-          <>
-            <h2>{winner? "You Win" : "Game Over"}</h2>
-            <button onClick={resetGame}>Play Again</button>
-          </>
-        : <></>
-      }
-      <h1>Score: {score}</h1>
-      {
-        cards.map(image => <Card key={image.id} id={image.id} imgSrc={image.imgSrc} imgText={image.imgText} onClick={handleCardClick}/>)
-      } */}
     </div>
   )
 }
