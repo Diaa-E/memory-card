@@ -19,7 +19,7 @@ export default function Game({enabled, cards, appStatus, appStatusMap, updateCar
 
     function handleCardClick(cardId)
     {
-        if (appStatus === appStatusMap.gameover) return;
+        if (appStatus !== appStatusMap.normal) return;
 
         const cardIndex = getCardIndex(cardId, cards);
         
