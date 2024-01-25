@@ -7,6 +7,7 @@ import { v4 as generateId } from 'uuid';
 import getRandomCards from './cardFetcher';
 import LoadingScreen from './components/LoadingScreen';
 import Game from './components/Game';
+import GameoverScreen from './components/GameoverScreen';
 
 function App() {
 
@@ -109,6 +110,11 @@ function App() {
   return (
     <div className='main-container' style={{backgroundColor: bgColors[appStatus]}}>
       <LoadingScreen enabled={appStatus === appStatusMap.loading}/>
+      <GameoverScreen
+        enabled={appStatus === appStatusMap.gameover || appStatus === appStatusMap.win}
+        appStatus={appStatus}
+        appStatusMap={appStatusMap}
+      />
       <Game
         enabled={appStatus === appStatusMap.normal}
         cards={cards}

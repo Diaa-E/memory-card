@@ -1,0 +1,8 @@
+.gameover-container{
+    display: grid;
+}
+
+.gameover-container>h2{
+    font-size: 70px;
+    color: var(--text-bright);
+}
