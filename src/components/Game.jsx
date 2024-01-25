@@ -46,6 +46,9 @@ export default function Game({enabled, cards, appStatus, appStatusMap, updateCar
 
         if (!enabled) return;
     
+        setScore(0);
+        setTime(0);
+        setClickedCards(0);
         const timer = setInterval(() => setTime(time => time + 1), 1000);
     
         return () => {

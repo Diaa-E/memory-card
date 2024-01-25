@@ -1,0 +1,21 @@
+.highscores-container{
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+    color: var(--text-bright)
+}
+
+.highscores-container>h3{
+    font-size: 30px;
+}
+
+.highscores-row{
+    display: flex;
+    place-content: space-between;
+    min-width: 300px;
+}
+
+.highscores-row>p{
+    font-size: 20px;
+}

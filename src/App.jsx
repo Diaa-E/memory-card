@@ -8,6 +8,7 @@ import getRandomCards from './cardFetcher';
 import LoadingScreen from './components/LoadingScreen';
 import Game from './components/Game';
 import GameoverScreen from './components/GameoverScreen';
+import Highscores from './components/Highscores';
 
 function App() {
 
@@ -109,12 +110,17 @@ function App() {
 
   return (
     <div className='main-container' style={{backgroundColor: bgColors[appStatus]}}>
+
       <LoadingScreen enabled={appStatus === appStatusMap.loading}/>
+
       <GameoverScreen
         enabled={appStatus === appStatusMap.gameover || appStatus === appStatusMap.win}
         appStatus={appStatus}
         appStatusMap={appStatusMap}
+        highscores={highscores}
+        resetGame={resetGame}
       />
+
       <Game
         enabled={appStatus === appStatusMap.normal}
         cards={cards}

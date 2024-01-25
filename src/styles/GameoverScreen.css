@@ -1,5 +1,9 @@
 .gameover-container{
     display: grid;
+    gap: 30px;
+    grid-template-rows: repeat(3, 1fr);
+    place-content: center;
+    place-items: center;
 }
 
 .gameover-container>h2{

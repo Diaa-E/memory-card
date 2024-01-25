@@ -12,3 +12,16 @@
   place-items: center;
   padding: 30px;
 }
+
+.play-button{
+  will-change: transform;
+  background-color: rgba(255, 255, 255, 0);
+  color: var(--text-bright);
+  font-size: 50px;
+  transition-duration: .5s;
+}
+
+.play-button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}

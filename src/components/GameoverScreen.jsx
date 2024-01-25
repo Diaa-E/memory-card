@@ -1,13 +1,15 @@
 import "../styles/GameoverScreen.css";
+import Highscores from "./Highscores";
 
-export default function GameoverScreen({enabled, appStatus, appStatusMap, highscores})
+export default function GameoverScreen({enabled, appStatus, appStatusMap, highscores, resetGame})
 {
     if (!enabled) return <></>
 
     return (
         <div className="gameover-container">
+            <button onClick={resetGame} className="play-button">Play Again</button>
             <h2 className="gameover-title">{appStatus === appStatusMap.win? "You Win!" : "Game Over!"}</h2>
-            <div className="highscores-container"></div>
+            <Highscores highscores={highscores} />
         </div>
     )
 }
