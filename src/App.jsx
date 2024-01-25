@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import './styles/App.css';
 import "./styles/reset.css";
 
-import shuffleArray from './arrayShuffler';
 import { v4 as generateId } from 'uuid';
 import getRandomCards from './cardFetcher';
 import LoadingScreen from './components/LoadingScreen';
@@ -13,13 +12,10 @@ function App() {
 
   const cardCount = 12;
 
-  const [clickedCards, setClickedCards] = useState(0);
   const [winner, setWinner] = useState(false);
   const [loading, setLoading] = useState(true);
   const [highscores, setHighscores] = useState([]);
-  const [time, setTime] = useState(0);
   const [gameover, setgameover] = useState(false);
-  const [score, setScore] = useState(0);
   const [cards, setCards] = useState([])
 
   useEffect(() => {
@@ -41,20 +37,7 @@ function App() {
 
   }, [loading]);
 
-  useEffect(() => {
-
-    if (gameover) return;
-
-    const timer = setInterval(() => setTime(time => time + 1), 1000);
-
-    return () => {
-
-      clearInterval(timer);
-    };
-
-  }, [gameover]);
-
-  function saveHighscore()
+  function saveHighscore(score, time)
   {
     const newScore = {
       score: score,
@@ -77,42 +60,22 @@ function App() {
     setHighscores(newHighscores);
   }
 
-  function shuffleCards()
+  function handleGameover(score, time)
   {
-    return shuffleArray(cards);
+    setgameover(true);
+    saveHighscore(score, time);
   }
 
-  function getCardIndex(cardId, cardsArray)
+  function handleWin(score, time)
   {
-    return cardsArray.findIndex((image) => image.id === cardId);
+    setgameover(true);
+    setWinner(true);
+    saveHighscore(score, time);
   }
 
-  function handleCardClick(cardId)
+  function updateCards(newCards)
   {
-    if (gameover) return;
-
-    const cardIndex = getCardIndex(cardId, cards);
-    
-    if (cards[cardIndex].clicked)
-    {
-      setgameover(true);
-      saveHighscore();
-      return;
-    }
-    
-    let newCardImages = [...cards];
-    newCardImages[cardIndex].clicked = true;
-    newCardImages = [...shuffleCards(newCardImages)];
-    setScore(score => score + 1);
-    setCards(newCardImages);
-    setClickedCards(clickedCards => clickedCards + 1);
-
-    if (clickedCards + 1 === cardCount)
-    {
-      setgameover(true);
-      setWinner(true);
-      saveHighscore();
-    }
+    setCards(newCards);
   }
 
   function resetGame()
@@ -126,8 +89,6 @@ function App() {
 
     setCards(freshCards);
     setgameover(false);
-    setTime(0);
-    setScore(0);
     setClickedCards(0);
     setWinner(false);
   }
@@ -135,7 +96,15 @@ function App() {
   return (
     <div className='main-container' style={{backgroundColor: `var(${loading? "--bg-loading" : "--bg-normal"})`}}>
       <LoadingScreen enabled={loading}/>
-      <Game enabled={!loading && !gameover} cards={cards} gameover={gameover} onCardClick={handleCardClick} winner={winner}/>
+      <Game
+        enabled={!loading && !gameover}
+        cards={cards}
+        gameover={gameover}
+        winner={winner}
+        onWin={handleWin}
+        onGameover={handleGameover}
+        updateCards={updateCards}
+      />
       {/* <ul>
         {
           highscores.map(highscore => <li key={highscore.id}><p>Time: {highscore.time} Score: {highscore.score}</p></li>)
