@@ -3,7 +3,7 @@ import "../styles/Game.css";
 import Card from "./Card";
 import { useState, useEffect } from "react";
 
-export default function Game({enabled, cards, gameover, updateCards, onWin, onGameover})
+export default function Game({enabled, cards, appStatus, appStatusMap, updateCards, onWin, onGameover})
 {
     const [time, setTime] = useState(0);
     const [score, setScore] = useState(0);
@@ -19,7 +19,7 @@ export default function Game({enabled, cards, gameover, updateCards, onWin, onGa
 
     function handleCardClick(cardId)
     {
-        if (gameover) return;
+        if (appStatus === appStatusMap.gameover) return;
 
         const cardIndex = getCardIndex(cardId, cards);
         

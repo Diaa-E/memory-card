@@ -11,16 +11,30 @@ import Game from './components/Game';
 function App() {
 
   const cardCount = 12;
+  const appStatusMap = {
+    loading: "loading",
+    ready: "ready",
+    normal: "normal",
+    gameover: "gameover",
+    win: "win",
+  };
 
+  const bgColors = {
+    loading: "var(--bg-loading)",
+    ready: "var(--bg-valid)",
+    normal: "var(--bg-normal)",
+    gameover: "var(--bg-danger)",
+    win: "var(--bg-valid)"
+  }
+
+  const [appStatus, setAppStatus] = useState(appStatusMap.loading);
   const [winner, setWinner] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [highscores, setHighscores] = useState([]);
-  const [gameover, setgameover] = useState(false);
   const [cards, setCards] = useState([])
 
   useEffect(() => {
 
-    if (!loading) return;
+    if (appStatus !== appStatusMap.loading) return;
 
     getRandomCards(cardCount).then((cards => {
 
@@ -30,12 +44,12 @@ function App() {
         
         images.push({id:card.id, imgSrc:card.image, imgText: `card`, clicked: false});
         setCards(images);
-        setLoading(false);
+        setAppStatus(appStatusMap.normal)
       });
       
     }));
 
-  }, [loading]);
+  }, [appStatus]);
 
   function saveHighscore(score, time)
   {
@@ -62,14 +76,13 @@ function App() {
 
   function handleGameover(score, time)
   {
-    setgameover(true);
+    setAppStatus(appStatusMap.gameover)
     saveHighscore(score, time);
   }
 
   function handleWin(score, time)
   {
-    setgameover(true);
-    setWinner(true);
+    setAppStatus(appStatusMap.win);
     saveHighscore(score, time);
   }
 
@@ -88,18 +101,19 @@ function App() {
     });
 
     setCards(freshCards);
-    setgameover(false);
+    setAppStatus(appStatusMap.loading);
     setClickedCards(0);
     setWinner(false);
   }
 
   return (
-    <div className='main-container' style={{backgroundColor: `var(${loading? "--bg-loading" : "--bg-normal"})`}}>
-      <LoadingScreen enabled={loading}/>
+    <div className='main-container' style={{backgroundColor: bgColors[appStatus]}}>
+      <LoadingScreen enabled={appStatus === appStatusMap.loading}/>
       <Game
-        enabled={!loading && !gameover}
+        enabled={appStatus === appStatusMap.normal}
         cards={cards}
-        gameover={gameover}
+        appStatus={appStatus}
+        appStatusMap={appStatusMap}
         winner={winner}
         onWin={handleWin}
         onGameover={handleGameover}
