@@ -1,0 +1,12 @@
+.difficulty-container{
+    display: flex;
+    gap: 100px;
+}
+
+.easy-button{
+    color: var(--bg-valid);
+}
+
+.hard-button{
+    color: var(--bg-danger);
+}
