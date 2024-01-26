@@ -30,7 +30,6 @@ function App() {
   }
 
   const [appStatus, setAppStatus] = useState(appStatusMap.loading);
-  const [winner, setWinner] = useState(false);
   const [highscores, setHighscores] = useState([]);
   const [cards, setCards] = useState([])
 
@@ -104,8 +103,6 @@ function App() {
 
     setCards(freshCards);
     setAppStatus(appStatusMap.loading);
-    setClickedCards(0);
-    setWinner(false);
   }
 
   function startGame()
@@ -133,7 +130,6 @@ function App() {
         cards={cards}
         appStatus={appStatus}
         appStatusMap={appStatusMap}
-        winner={winner}
         onWin={handleWin}
         onGameover={handleGameover}
         updateCards={updateCards}
