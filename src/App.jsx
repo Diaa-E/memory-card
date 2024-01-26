@@ -31,7 +31,8 @@ function App() {
 
   const [appStatus, setAppStatus] = useState(appStatusMap.loading);
   const [highscores, setHighscores] = useState([]);
-  const [cards, setCards] = useState([])
+  const [cards, setCards] = useState([]);
+  const [currentScore, setCurrentScore] = useState({});
 
   useEffect(() => {
 
@@ -61,6 +62,7 @@ function App() {
       id: generateId(),
     };
 
+    setCurrentScore(newScore);
     const newHighscores = [...highscores, newScore].sort((a, b) => {
 
       if (a.rank > b.rank) return -1;
@@ -123,6 +125,7 @@ function App() {
         appStatusMap={appStatusMap}
         highscores={highscores}
         resetGame={resetGame}
+        currentScore={currentScore}
       />
 
       <Game

@@ -19,3 +19,12 @@
 .highscores-row>p{
     font-size: 20px;
 }
+
+.current-score-highlight>p{
+    font-size: 30px;
+    color: var(--text-dark);
+}
+
+.current-score-highlight{
+    background-color: var(--highlight);
+}
