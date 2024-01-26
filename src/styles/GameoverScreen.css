@@ -10,3 +10,14 @@
     font-size: 70px;
     color: var(--text-bright);
 }
+
+.set-diff-button{
+    color: var(--highlight);
+    font-size: 35px;
+}
+
+.play-again-container{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}

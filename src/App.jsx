@@ -97,7 +97,7 @@ function App() {
     setCards(newCards);
   }
 
-  function resetGame()
+  function resetGame(changeDifficulty = false)
   {
     const freshCards = [...cards];
 
@@ -107,6 +107,13 @@ function App() {
     });
 
     setCards(freshCards);
+
+    if (changeDifficulty)
+    {
+      setAppStatus(appStatusMap.diffSetting);
+      return;
+    }
+    
     setAppStatus(appStatusMap.loading);
   }
 

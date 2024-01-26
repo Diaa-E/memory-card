@@ -7,7 +7,10 @@ export default function GameoverScreen({enabled, appStatus, appStatusMap, highsc
 
     return (
         <div className="gameover-container">
-            <button onClick={resetGame} className="play-button">Play Again</button>
+            <div className="play-again-container">
+                <button onClick={() => resetGame(false)} className="play-button">Play Again</button>
+                <button onClick={() => resetGame(true)} className="play-button set-diff-button">Change Difficulty</button>
+            </div>
             <h2 className="gameover-title">{appStatus === appStatusMap.win? "You Win!" : "Game Over!"}</h2>
             <Highscores highscores={highscores} currentScore={currentScore} />
         </div>
