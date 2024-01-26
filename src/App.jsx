@@ -102,6 +102,7 @@ function App() {
     if (changeDifficulty)
     {
       setAppStatus(appStatusMap.diffSetting);
+      setHighscores([])
       return;
     }
 
