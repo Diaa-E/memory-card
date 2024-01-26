@@ -99,21 +99,12 @@ function App() {
 
   function resetGame(changeDifficulty = false)
   {
-    const freshCards = [...cards];
-
-    freshCards.forEach(card => {
-
-      card.clicked = false;
-    });
-
-    setCards(freshCards);
-
     if (changeDifficulty)
     {
       setAppStatus(appStatusMap.diffSetting);
       return;
     }
-    
+
     setAppStatus(appStatusMap.loading);
   }
 
