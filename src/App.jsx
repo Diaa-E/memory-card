@@ -8,6 +8,7 @@ import getRandomCards from './cardFetcher';
 import LoadingScreen from './components/LoadingScreen';
 import Game from './components/Game';
 import GameoverScreen from './components/GameoverScreen';
+import ReadyScreen from './components/ReadyScreen';
 
 function App() {
 
@@ -45,7 +46,7 @@ function App() {
         
         images.push({id:card.id, imgSrc:card.image, imgText: `card`, clicked: false});
         setCards(images);
-        setAppStatus(appStatusMap.normal)
+        setAppStatus(appStatusMap.ready)
       });
       
     }));
@@ -107,10 +108,17 @@ function App() {
     setWinner(false);
   }
 
+  function startGame()
+  {
+    setAppStatus(appStatusMap.normal);
+  }
+
   return (
     <div className='main-container' style={{backgroundColor: bgColors[appStatus]}}>
 
       <LoadingScreen enabled={appStatus === appStatusMap.loading}/>
+
+      <ReadyScreen enabled={appStatus === appStatusMap.ready} onClick={startGame}/>
 
       <GameoverScreen
         enabled={appStatus === appStatusMap.gameover || appStatus === appStatusMap.win}
