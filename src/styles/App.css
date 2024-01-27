@@ -6,12 +6,12 @@
   flex-direction: column;
   place-content: center;
   place-items: center;
-  padding: 30px;
+  padding: 0 30px 30px 30px;
 }
 
 .play-button{
   will-change: transform;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: var(--transparent);
   color: var(--text-bright);
   font-size: 50px;
   transition-duration: .5s;
@@ -20,4 +20,9 @@
 .play-button:hover{
   cursor: pointer;
   transform: scale(1.1);
+}
+
+.about-button{
+  color: var(--text-dark);
+  padding: 0 10px;
 }

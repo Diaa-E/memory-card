@@ -1,6 +1,16 @@
 .difficulty-container{
     display: flex;
     gap: 100px;
+    margin: 0 0 auto 0;
+}
+
+.title-container{
+    display: flex;
+    background-color: var(--highlight);
+    width: 100dvw;
+    margin: 0 0 auto 0;
+    place-items: space-around;
+    place-content: space-around;
 }
 
 .easy-button{
@@ -9,4 +19,8 @@
 
 .hard-button{
     color: var(--bg-danger);
+}
+
+.title{
+    font-size: 80px;
 }
