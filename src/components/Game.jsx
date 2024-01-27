@@ -63,18 +63,22 @@ export default function Game({enabled, cards, appStatus, appStatusMap, updateCar
     if (!enabled) return <></>
 
     return (
-        <div className="game-container">
-            <h2 className="time">{timePretty}</h2>
-            <h2 className="score">{score}</h2>
-            {
-                cards.map(image => <Card
-                                        key={image.id}
-                                        id={image.id}
-                                        imgSrc={image.imgSrc}
-                                        imgText={image.imgText}
-                                        onClick={handleCardClick}
-                                    />)
-            }
-        </div>
+        <>
+            <div className="stats-container">
+                <h2 className="score">{score}</h2>
+                <h2 className="time">{timePretty}</h2>
+            </div>
+            <div className="game-container">
+                {
+                    cards.map(image => <Card
+                        key={image.id}
+                        id={image.id}
+                        imgSrc={image.imgSrc}
+                        imgText={image.imgText}
+                        onClick={handleCardClick}
+                        />)
+                    }
+            </div>
+        </>
     )
 }

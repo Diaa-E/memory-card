@@ -1,14 +1,10 @@
 .game-container{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(3, min-content);
-    grid-template-areas: 
-    "score score score time time time"
-    "cards cards cards cards cards cards"
-    "cards cards cards cards cards cards";
+    grid-auto-rows: 1fr;
     gap: 30px;
     padding: 20px;
-    min-width: 100dvw;
+    margin: auto 0;
     place-items: center;
     place-content: center;
 }
@@ -23,7 +19,14 @@
     place-self: flex-start;
 }
 
-.game-container>h2{
+.stats-container>h2{
     color: var(--text-bright);
     font-size: 50px;
+}
+
+.stats-container{
+    display: flex;
+    place-self: stretch;
+    place-items: space-between;
+    place-content: space-between;
 }
