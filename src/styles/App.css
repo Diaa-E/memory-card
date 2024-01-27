@@ -24,5 +24,11 @@
 
 .about-button{
   color: var(--text-dark);
-  padding: 0 10px;
+}
+
+.close-button{
+  position: absolute;
+  right: 20px;
+  top: 200px;
+  color: var(--text-dark);
 }

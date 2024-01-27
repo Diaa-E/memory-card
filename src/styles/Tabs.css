@@ -1,0 +1,16 @@
+.tab{
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+}
+
+.tab>p{
+    font-size: 40px;
+    color: var(--text-bright);
+}
+
+.tab a{
+    cursor: pointer;
+    color: var(--highlight);
+    text-decoration: underline;
+}
