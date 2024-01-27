@@ -21,13 +21,15 @@
 }
 
 .stats-container>h2{
-    color: var(--text-bright);
+    color: var(--text-dark);
     font-size: 50px;
 }
 
 .stats-container{
+    background-color: var(--highlight);
     display: flex;
     place-self: stretch;
     place-items: space-between;
     place-content: space-between;
+    padding: 0 20px;
 }
