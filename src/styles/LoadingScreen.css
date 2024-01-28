@@ -1,13 +1,13 @@
 .loading-container{
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 30px;
     place-items: center;
     place-content: center;
 }
 
 .loading-container>p{
-    font-size: 50px;
+    font-size: 30px;
     color: var(--text-bright);
 }
 
@@ -17,7 +17,7 @@
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
     grid-template-areas: "card";
-    width: 50px;
+    width: 30px;
     animation-name: rotate-card;
     animation-duration: 1.5s;
     animation-timing-function: linear;
@@ -39,5 +39,19 @@
 @keyframes rotate-card {
     from {transform: rotate3d(0, 1, 0, 0deg) rotateZ(30deg);}
     to {transform: rotate3d(0, 1, 0, 360deg) rotateZ(30deg);}
+}
+
+@media (min-width: 700px) and (orientation: landscape){
+    .card-3d{
+        width: 50px;
+    }
+
+    .loading-container>p{
+        font-size: 50px;
+    }
+    
+    .loading-container{
+        grid-area: 50px;
+    }
 }
 
