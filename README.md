@@ -4,4 +4,4 @@ A simple memory game.
 
 Project assignment from the Odin Project React course, focused on useEffect + Ajax.
 
-[Live Preview](https://github.com/Diaa-E/memory-card)
+[Live Preview](https://diaa-e.github.io/memory-card/)
