@@ -40,7 +40,7 @@ export default function Game({enabled, cards, appStatus, appStatusMap, updateCar
 
         if (clickedCards + 1 === cards.length)
         {
-            onWin(score, time, timePretty);
+            onWin(score + 1, time, timePretty);
         }
     }
 
