@@ -17,8 +17,7 @@
 }
 
 .play-button:hover{
-  cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1);
 }
 
 .about-button{
@@ -36,5 +35,10 @@
   
   .play-button{
     font-size: 50px;
+  }
+
+  .play-button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
   }
 }
