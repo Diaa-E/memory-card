@@ -1,5 +1,5 @@
 .card{
-    width: 170px;
+    width: 10dvh;
     height: auto;
     will-change: filter;
 }
@@ -7,4 +7,10 @@
 .card:hover{
     cursor: pointer;
     filter: drop-shadow(0 0 10px var(--text-bright));
+}
+
+@media (min-width: 700px) and (orientation: landscape){
+    .card{
+        width: 170px
+    }
 }
