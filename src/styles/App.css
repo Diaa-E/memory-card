@@ -12,7 +12,7 @@
   will-change: transform;
   background-color: var(--transparent);
   color: var(--text-bright);
-  font-size: 50px;
+  font-size: 30px;
   transition-duration: .5s;
 }
 
@@ -30,4 +30,11 @@
   right: 20px;
   top: 200px;
   color: var(--text-dark);
+}
+
+@media (min-width: 700px) and (orientation: landscape){
+  
+  .play-button{
+    font-size: 50px;
+  }
 }

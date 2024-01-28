@@ -5,7 +5,11 @@
 }
 
 .tab>p{
-    font-size: 40px;
+    font-size: 15px;
+    text-wrap: wrap;
+    max-width: 100dvw;
+    padding: 0 30px;
+    margin: 10px 0;
     color: var(--text-bright);
 }
 
@@ -25,4 +29,11 @@
 
 .span-valid{
     color: var(--bg-valid);
+}
+
+@media (min-width: 700px) and (orientation: landscape){
+    
+    .tab>p{
+        font-size: 40px;
+    }
 }
