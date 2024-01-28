@@ -14,3 +14,15 @@
     color: var(--highlight);
     text-decoration: underline;
 }
+
+.span-highlight{
+    color: var(--highlight);
+}
+
+.span-danger{
+    color: var(--bg-danger);
+}
+
+.span-valid{
+    color: var(--bg-valid);
+}
