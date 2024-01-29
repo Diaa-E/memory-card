@@ -61,15 +61,17 @@ function App() {
     const newScore = {
       score: score,
       time: timePretty,
-      rank: +score / +time,
       id: generateId(),
     };
 
     setCurrentScore(newScore);
     const newHighscores = [...highscores, newScore].sort((a, b) => {
 
-      if (a.rank > b.rank) return -1;
-      return 1;
+      if (a.score > b.score) return -1;
+      if (a.score < b.score) return 1;
+      if (a.time > b.time) return -1;
+      if (a.time < b.time) return 1;
+      return 0;
     });
 
     while (newHighscores.length > 5)
