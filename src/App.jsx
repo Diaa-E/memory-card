@@ -69,8 +69,8 @@ function App() {
 
       if (a.score > b.score) return -1;
       if (a.score < b.score) return 1;
-      if (a.time > b.time) return -1;
-      if (a.time < b.time) return 1;
+      if (a.time > b.time) return 1;
+      if (a.time < b.time) return -1;
       return 0;
     });
 
